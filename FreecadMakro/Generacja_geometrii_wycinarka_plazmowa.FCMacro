@@ -1,0 +1,369 @@
+# import statements
+
+from PySide import QtGui, QtCore
+
+# UI Class definitions
+
+class Window(QtGui.QDialog):
+	""""""
+	def __init__(self):
+		super(Window, self).__init__()
+		self.initUI()
+	def initUI(self):
+		self.result = userCancelled
+		# create our window
+		# define window		xLoc,yLoc,xDim,yDim
+		self.setGeometry(	250, 150, 600, 600)
+		self.setWindowTitle("Generator geometrii")
+		self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
+
+
+		#Dane cietej rury
+
+		self.label1 = QtGui.QLabel("1. Wprowadz dane cietej rury:", self)
+		self.label1.move(20, 10)
+
+		self.label2 = QtGui.QLabel("Srednica - D [mm]:", self)
+		self.label2.move(20, 30)
+
+		self.label3 = QtGui.QLabel("Dlugosc rury - L [mm]:", self)
+		self.label3.move(20, 60)
+
+		self.label4 = QtGui.QLabel("Grubosc scianki - a [mm]:", self)
+		self.label4.move(20, 90)
+
+		self.pipeDiameter = QtGui.QLineEdit(self)
+		self.pipeDiameter.setInputMask("999")
+		self.pipeDiameter.setText("100")
+		self.pipeDiameter.setFixedWidth(50)
+		self.pipeDiameter.move(250, 30)
+
+		self.pipeLength = QtGui.QLineEdit(self)
+		self.pipeLength.setInputMask("9999")
+		self.pipeLength.setText("400")
+		self.pipeLength.setFixedWidth(50)
+		self.pipeLength.move(250, 60)
+
+		self.pipeThickness = QtGui.QLineEdit(self)
+		self.pipeThickness.setInputMask("999")
+		self.pipeThickness.setText("2")
+		self.pipeThickness.setFixedWidth(50)
+		self.pipeThickness.move(250, 90)
+
+
+
+		#Dane rury do ciecia
+		self.checkbox1 = QtGui.QCheckBox("Ciecie druga rura", self)
+		self.checkbox1.clicked.connect(self.onCheckbox1)
+		self.checkbox1.move(300, 140)
+
+		self.checkbox1v2 = QtGui.QCheckBox("Ciecie przelotowe", self)
+		self.checkbox1v2.move(300, 160)
+		
+		self.label5 = QtGui.QLabel("2. Wprowadz dane drugiej rury:", self)
+		self.label5.move(20, 140)
+
+		self.label6 = QtGui.QLabel("Srednica - D [mm]:", self)
+		self.label6.move(20, 170)
+
+		self.label7 = QtGui.QLabel("Dlugosc rury - L [mm]:", self)
+		self.label7.move(20, 200)
+
+		self.label8 = QtGui.QLabel("Grubosc scianki - a [mm]:", self)
+		self.label8.move(20, 230)
+
+
+		self.label9 = QtGui.QLabel("Obrot rury wzgledem", self)
+		self.label9.move(20, 260)
+
+		self.label91 = QtGui.QLabel("osi (X,Y,Z) [stopnie]", self)
+		self.label91.move(20, 280)
+
+		self.label101 = QtGui.QLabel("Punkt przecieca", self)
+		self.label101.move(20, 310)
+
+		self.label101 = QtGui.QLabel("osi rur (X,Y,Z) [mm]", self)
+		self.label101.move(20, 330)
+
+
+		self.secondPipeDiameter = QtGui.QLineEdit(self)
+		self.secondPipeDiameter.setInputMask("999")
+		self.secondPipeDiameter.setText("50")
+		self.secondPipeDiameter.setFixedWidth(50)
+		self.secondPipeDiameter.move(250, 170)
+
+		self.secondPipeLength = QtGui.QLineEdit(self)
+		self.secondPipeLength.setInputMask("9999")
+		self.secondPipeLength.setText("400")
+		self.secondPipeLength.setFixedWidth(50)
+		self.secondPipeLength.move(250, 200)
+
+		self.secondPipeThickness = QtGui.QLineEdit(self)
+		self.secondPipeThickness.setInputMask("999")
+		self.secondPipeThickness.setText("2")
+		self.secondPipeThickness.setFixedWidth(50)
+		self.secondPipeThickness.move(250, 230)
+
+		self.secondPipeAngleX = QtGui.QLineEdit(self)
+		self.secondPipeAngleX.setInputMask("999")
+		self.secondPipeAngleX.setText("0")
+		self.secondPipeAngleX.setFixedWidth(50)
+		self.secondPipeAngleX.move(250, 260)
+
+
+		self.secondPipeAngleY = QtGui.QLineEdit(self)
+		self.secondPipeAngleY.setInputMask("999")
+		self.secondPipeAngleY.setText("0")
+		self.secondPipeAngleY.setFixedWidth(50)
+		self.secondPipeAngleY.move(310, 260)
+
+		self.secondPipeAngleZ = QtGui.QLineEdit(self)
+		self.secondPipeAngleZ.setInputMask("999")
+		self.secondPipeAngleZ.setText("45")
+		self.secondPipeAngleZ.setFixedWidth(50)
+		self.secondPipeAngleZ.move(370, 260)
+
+		self.secondPipeX = QtGui.QLineEdit(self)
+		self.secondPipeX.setInputMask("999")
+		self.secondPipeX.setText("150")
+		self.secondPipeX.setFixedWidth(50)
+		self.secondPipeX.move(250, 310)
+
+
+		self.secondPipeY = QtGui.QLineEdit(self)
+		self.secondPipeY.setInputMask("999")
+		self.secondPipeY.setText("0")
+		self.secondPipeY.setFixedWidth(50)
+		self.secondPipeY.move(310, 310)
+
+		self.secondPipeZ = QtGui.QLineEdit(self)
+		self.secondPipeZ.setInputMask("999")
+		self.secondPipeZ.setText("0")
+		self.secondPipeZ.setFixedWidth(50)
+		self.secondPipeZ.move(360, 310)
+
+
+		# Dane plaszczyzny ciecia
+
+		self.checkbox2 = QtGui.QCheckBox("Ciecie plaszczyzna", self)
+		self.checkbox2.clicked.connect(self.onCheckbox2)
+		self.checkbox2.move(300,360)
+
+		self.label11 = QtGui.QLabel("3. Wprowadz dane plaszczyzny ciecie:", self)
+		self.label11.move(20, 360)
+
+		self.label12 = QtGui.QLabel("Pkt przecieca plaszczyzny", self)
+		self.label12.move(20, 450)
+
+		self.label121 = QtGui.QLabel("i osi rury (X,Y,Z) [mm]", self)
+		self.label121.move(20, 470)
+
+		self.label13 = QtGui.QLabel("Obrot plaszczyzny wzgl.", self)
+		self.label13.move(20, 400)
+
+		self.label131 = QtGui.QLabel("osi (X,Y,Z) [stopnie]", self)
+		self.label131.move(20, 420)
+
+
+
+		self.planeAngleX = QtGui.QLineEdit(self)
+		self.planeAngleX.setInputMask("999")
+		self.planeAngleX.setText("0")
+		self.planeAngleX.setFixedWidth(50)
+		self.planeAngleX.move(250, 400)
+
+
+		self.planeAngleY = QtGui.QLineEdit(self)
+		self.planeAngleY.setInputMask("999")
+		self.planeAngleY.setText("45")
+		self.planeAngleY.setFixedWidth(50)
+		self.planeAngleY.move(310, 400)
+
+		self.planeAngleZ = QtGui.QLineEdit(self)
+		self.planeAngleZ.setInputMask("999")
+		self.planeAngleZ.setText("0")
+		self.planeAngleZ.setFixedWidth(50)
+		self.planeAngleZ.move(370, 400)
+
+		self.planeX = QtGui.QLineEdit(self)
+		self.planeX.setInputMask("999")
+		self.planeX.setText("350")
+		self.planeX.setFixedWidth(50)
+		self.planeX.move(250, 450)
+
+
+		self.planeY = QtGui.QLineEdit(self)
+		self.planeY.setInputMask("999")
+		self.planeY.setText("0")
+		self.planeY.setFixedWidth(50)
+		self.planeY.move(310, 450)
+
+		self.planeZ = QtGui.QLineEdit(self)
+		self.planeZ.setInputMask("999")
+		self.planeZ.setText("0")
+		self.planeZ.setFixedWidth(50)
+		self.planeZ.move(370, 450)
+
+
+		#Wlasne operacje ciecia
+
+		self.checkbox3 = QtGui.QCheckBox("Wlasne operacje CAD", self)
+		self.checkbox3.clicked.connect(self.onCheckbox3)
+		self.checkbox3.move(300,490)
+
+		self.label14 = QtGui.QLabel("4. Wlasne operacje na modelu", self)
+		self.label14.move(20, 490)
+
+		# cancel button
+		cancelButton = QtGui.QPushButton('Cancel', self)
+		cancelButton.clicked.connect(self.onCancel)
+		cancelButton.setAutoDefault(True)
+		cancelButton.move(260, 550)
+		# OK button
+		okButton = QtGui.QPushButton('OK', self)
+		okButton.clicked.connect(self.onOk)
+		okButton.move(150, 550)
+		# now make the window visible
+		self.show()
+		#
+	def onCheckbox1(self):	
+		return True
+
+	def onCheckbox2(self):
+		return True
+
+	def onCheckbox3(self):
+		return True
+
+
+	def onCancel(self):
+		self.result = userCancelled
+		self.close()
+	def onOk(self):
+		self.result = "OKEY"
+		self.close()
+
+
+userCancelled = "Cancelled"
+userOK = "OK"
+# code ***********************************************************************************
+
+form = Window()
+form.exec_()
+
+if form.result == userCancelled:
+	pass # steps to handle user clicking Cancel
+
+if (form.result == "OKEY"):	
+	print("OK")
+
+	pipeDiameter=int(form.pipeDiameter.text())
+	pipeLength=int(form.pipeLength.text())
+	pipeThickness=int(form.pipeThickness.text())
+	
+	secondPipeDiameter=int(form.secondPipeDiameter.text())
+	secondPipeLength=int(form.secondPipeLength.text())
+	secondPipeThickness=int(form.secondPipeThickness.text())
+	secondPipeAngleX=int(form.secondPipeAngleX.text())
+	secondPipeAngleY=int(form.secondPipeAngleY.text())
+	secondPipeAngleZ=int(form.secondPipeAngleZ.text())
+	secondPipeX=int(form.secondPipeX.text())
+	secondPipeY=int(form.secondPipeY.text())
+	secondPipeZ=int(form.secondPipeZ.text())
+
+	planeAngleX=int(form.planeAngleX.text())
+	planeAngleY=int(form.planeAngleY.text())
+	planeAngleZ=int(form.planeAngleZ.text())
+	planeX=int(form.planeX.text())
+	planeY=int(form.planeY.text())
+	planeZ=int(form.planeZ.text())
+
+
+
+
+#-----------------------------GENEROWANIE GEOMETRII-----------------------------------
+
+import Part
+import FreeCAD
+from FreeCAD import Base
+
+doc = FreeCAD.newDocument("plasma_cutter")
+
+#tworzenie glownej rury wzdluz osi X
+pipe1Dir=Base.Vector(1,0,0)
+pipe1pnt=Base.Vector(0,0,0)
+pipe1angle=360
+pipe1=Part.makeCylinder(pipeDiameter/2, pipeLength, pipe1pnt ,pipe1Dir, pipe1angle)
+
+#robienie rury z pelnego preta o zadanej grubosci scianki
+pipe1cutTool=Part.makeCylinder(pipeDiameter/2-pipeThickness, pipeLength, pipe1pnt ,pipe1Dir, pipe1angle)
+
+pipe1 = pipe1.cut(pipe1cutTool)
+#Part.show(pipe1)
+Gui.ActiveDocument.ActiveView.setAxisCross(True)
+
+
+if form.checkbox1.isChecked():
+	#druga rura do wyciecia otworu
+	pipe2Dir=Base.Vector(1,0,0)
+	pipe2pnt=Base.Vector(0,0,0)
+	pipe2angle=360
+	pipe2=Part.makeCylinder(secondPipeDiameter/2, secondPipeLength, pipe2pnt ,pipe2Dir, pipe2angle)
+
+	pipe2.rotate(pipe2pnt,Base.Vector(1,0,0),secondPipeAngleX)
+	pipe2.rotate(pipe2pnt,Base.Vector(0,1,0),secondPipeAngleY)
+	pipe2.rotate(pipe2pnt,Base.Vector(0,0,1),secondPipeAngleZ)
+
+	pipe2.translate(Base.Vector(secondPipeX,secondPipeY,secondPipeZ))
+
+	#drugi otwor jesi bedzie zaznoczony ptaszek cieci z 2 stron pipe2v2
+	pipe2v2=Part.makeCylinder(secondPipeDiameter/2, secondPipeLength, pipe2pnt ,(-1)*pipe2Dir, pipe2angle)
+
+	pipe2v2.rotate(pipe2pnt,Base.Vector(1,0,0),secondPipeAngleX)
+	pipe2v2.rotate(pipe2pnt,Base.Vector(0,1,0),secondPipeAngleY)
+	pipe2v2.rotate(pipe2pnt,Base.Vector(0,0,1),secondPipeAngleZ)
+
+	pipe2v2.translate(Base.Vector(secondPipeX,secondPipeY,secondPipeZ))
+
+
+	pipe1 = pipe1.cut(pipe2)
+
+	if form.checkbox1v2.isChecked():
+		#ciecie z 2 stron - przelotowo
+		pipe1=pipe1.cut(pipe2v2)
+
+
+if form.checkbox2.isChecked():
+	#ciecie plaszczyzna rownolega do YZ, X normalna
+	plane1=Part.makePlane(10*pipeDiameter,10*pipeDiameter,Base.Vector(0,-5*pipeDiameter,-5*pipeDiameter), Base.Vector(1,0,0),Base.Vector(0,1,0))
+
+	plane1.rotate(Base.Vector(0,0,0),Base.Vector(1,0,0),planeAngleX)
+	plane1.rotate(Base.Vector(0,0,0),Base.Vector(0,1,0),planeAngleY)
+	plane1.rotate(Base.Vector(0,0,0),Base.Vector(0,0,1),planeAngleZ)
+	plane1.translate(Base.Vector(planeX, planeY, planeZ))
+
+	#Part.show(plane1)
+	#App.ActiveDocument.ActiveObject.Label = "Plane1"
+
+	#Ciecie plaszczyzna
+	normalPlane1=plane1.normalAt(0,0)
+	plane1=plane1.extrude(normalPlane1*pipeLength*4)
+	#Part.show(plane1)
+
+	pipe1=pipe1.cut(plane1)
+
+
+Part.show(pipe1)
+#zmiana nazwy i ustawienie widoku
+App.ActiveDocument.ActiveObject.Label = "Pipe1"
+Gui.activeDocument().activeView().viewAxonometric()
+Gui.SendMsgToActiveView("ViewFit")
+
+
+
+############################################
+
+from PySide import QtGui
+QtGui.QMessageBox.information(None,"Wybierz krawedzie","Wybierz krawedzie, z ktorych bedzie generowany GCode. Kolejnosc wyboru krawedzi to kolejnosc ciecia. Uzyj CTRL do zaznaczenia wiekszej ilosci krawedzi. Po wybraniu krawedzi uruchom makro do generacji GCode.") 
+
+
