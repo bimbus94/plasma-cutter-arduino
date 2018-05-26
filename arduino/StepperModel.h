@@ -14,6 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
+
+/*Changed by Jacek Korbel 2018 from EggBot to PlasmaCutter for Tubes*/
  
 #ifndef STEPPERMODEL
 #define STEPPERMODEL
@@ -38,7 +40,15 @@ private:
   
   long minStepCount;
   long maxStepCount;
+
+  double steps_per;
   double steps_per_mm;
+  double steps_per_deg;
+  double steps_per_rad;
+
+  double gearRatio;
+  double defaultDiameter;
+
 
   double kStepsPerRevolution;
   int kMicroStepping;
@@ -56,14 +66,16 @@ public:
   double targetPosition;
   
  StepperModel(
-        int inDirPin, int inStepPin, int inEnablePin, int inEndStopPin,
+        int inDirPin, int inStepPin, int inEnablePin, int inEndStopPin, 
         int inMs1Pin, int inMs2Pin, int inMs3Pin, 
-        int inSleepPin, int inResetPin, 
-        bool vms1, bool vms2, bool vms3,
+        int inSleepPin, int inResetPin,
+        bool vms1, bool vms2, bool vms3, 
         long minSC, long maxSC,
-        double in_kStepsPerRevolution, int in_kMicroStepping);
+        double in_kStepsPerRevolution, int in_kMicroStepping, int in_gearRatio,
+        double in_defaultDiameter);
   
   void resetSteppersForObjectDiameter(double diameter);
+  void resetSteppersForMoveType(int type);
   
 #ifdef AUTO_HOMING
   void autoHoming();

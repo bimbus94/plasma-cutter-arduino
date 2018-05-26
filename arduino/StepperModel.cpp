@@ -14,6 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>
  */
+
+/*Changed by Jacek Korbel 2018 from EggBot to PlasmaCutter for Tubes*/
  
 #include "StepperModel.h"
 #include "Arduino.h"
@@ -28,10 +30,13 @@ StepperModel::StepperModel(
         int inSleepPin, int inResetPin,
         bool vms1, bool vms2, bool vms3, 
         long minSC, long maxSC,
-        double in_kStepsPerRevolution, int in_kMicroStepping)
+        double in_kStepsPerRevolution, int in_kMicroStepping, int in_gearRatio,
+		double in_defaultDiameter)
 {
   kStepsPerRevolution=in_kStepsPerRevolution;
   kMicroStepping=in_kMicroStepping;
+
+  gearRatio=in_gearRatio;
 
   dirPin = inDirPin;
   stepPin = inStepPin;
@@ -45,6 +50,9 @@ StepperModel::StepperModel(
     
   minStepCount=minSC;
   maxStepCount=maxSC;
+
+  defaultDiameter=in_defaultDiameter;
+
   
   pinMode(dirPin, OUTPUT);  
   pinMode(stepPin, OUTPUT);  
@@ -83,14 +91,27 @@ StepperModel::StepperModel(
   currentStepcount=0;
   targetStepcount=0;
 
-  steps_per_mm = (int)((kStepsPerRevolution/(45.*M_PI))*kMicroStepping+0.5); // default value for a "normal" egg (45 mm diameter)
+// rozne stepy w zaleznosci od silnika dla osi Y
+// steps_per_mm - trzeba dodac zmiane srednicy w kodzie = ilosc krokow w jednym obrocie / (Pi*srednica rury)*liczba mikro-krokow*przelozenie mechaniczne
+  steps_per_mm = (int)((kStepsPerRevolution/(defaultDiameter*M_PI))*kMicroStepping*gearRatio+0.5); // default value for a example 100 diameter
+
+//liczba krokow na 1 radian 
+  steps_per_rad=(int)((kStepsPerRevolution/(2*M_PI))*kMicroStepping*gearRatio+0.5);
+
+//liczba krokow na 1 stopien
+  steps_per_deg=(int)((kStepsPerRevolution/(360))*kMicroStepping*gearRatio+0.5);
+
+  steps_per=step_per_mm;
+
   enableStepper(false);
 }
 
 void StepperModel::resetSteppersForObjectDiameter(double diameter)
 {
   // Calculate the motor steps required to move per mm.
-  steps_per_mm = (int)((kStepsPerRevolution/(diameter*M_PI))*kMicroStepping+0.5);
+  steps_per_mm = (int)((kStepsPerRevolution/(diameter*M_PI))*kMicroStepping*gearRation+0.5);
+  steps_per=steps_per_mm;
+  
   if(endStopPin>=0)
   {
 #ifdef AUTO_HOMING
@@ -102,9 +123,33 @@ void StepperModel::resetSteppersForObjectDiameter(double diameter)
     resetStepper();    
 }
 
+
+//FUNKCJA DO ZMIANY TYPU W JAKI SA ODMIERZANE KROKI, CZY TO RADIANY, MM, CZY STOPNIE steps_per_mm, steps_per_deg, steps_per_rad
+void StepperModel::resetSteppersForMoveType(int type)
+{
+  // Calculate the motor steps required to move per mm.
+  if (type==1){steps_per=steps_per_mm;}//(int)((kStepsPerRevolution/(diameter*M_PI))*kMicroStepping*gearRation+0.5)};
+  // Calculate the motor steps required to move per 1 rad
+  else if (type==2){steps_per=steps_per_rad;}
+   // Calculate the motor steps required to move per 1 degree
+  else if (type==3){steps_per=steps_per_deg;}
+  else {break;}
+
+  if(endStopPin>=0)
+  {
+#ifdef AUTO_HOMING
+    autoHoming();
+#endif
+    enableStepper(false);
+  }
+  else
+    resetStepper();    
+}
+
+
 long StepperModel::getStepsForMM(double mm)
 {
-  long steps = (long)(steps_per_mm*mm);
+  long steps = (long)(steps_per*mm);
   
 //  Serial.print("steps for ");
 //  Serial.print(mm);
@@ -149,7 +194,7 @@ void StepperModel::setTargetPosition(double pos)
 
 double StepperModel::getCurrentPosition()
 {
-    return (double)currentStepcount/steps_per_mm;
+    return (double)currentStepcount/steps_per;
 }
 
 void StepperModel::enableStepper(bool enabled)
