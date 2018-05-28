@@ -232,7 +232,7 @@ for p in allPoints:
 	row=[]
 	for r in p:
 		print r[0], " X", r[1], " Y" ,cart2polDeg(r[2], r[3], form2.gbutton1.isChecked(),form2.gbutton3.isChecked())
-		row=[r[0], r[1], cart2polDeg(r[2], r[3])]
+		row=[r[0], r[1], cart2polDeg(r[2], r[3], form2.gbutton1.isChecked(),form2.gbutton3.isChecked())]
 		wire.append(Base.Vector(r[1],cart2polDeg(r[2], r[3],form2.gbutton1.isChecked(),form2.gbutton3.isChecked()),0)) # append the coordinates
 		pointsList.append(row)
 	allPointsPolDeg.append(pointsList)
@@ -249,7 +249,7 @@ for p in allPoints:
 	row=[]
 	for r in p:
 		print r[0], " X", r[1], " Y" ,cart2curve_len(r[2], r[3], form2.gbutton3.isChecked())
-		row=[r[0], r[1], cart2curve_len(r[2], r[3])]
+		row=[r[0], r[1], cart2curve_len(r[2], r[3], form2.gbutton3.isChecked())]
 		wire.append(Base.Vector(r[1],cart2curve_len(r[2], r[3], form2.gbutton3.isChecked()),0)) # append the coordinates
 		pointsList.append(row)
 	allPointsCurve_Len.append(pointsList)
@@ -262,12 +262,15 @@ generatePoints=[]
 
 if form2.gbutton1.isChecked() or form2.gbutton2.isChecked():
 	generatePoints=allPointsPolDeg
+	print("wybrano allPointsPolDeg")
 	#Part.show(wireDeg)
 elif form2.gbutton3.isChecked() or form2.gbutton4.isChecked():
 	generatePoints=allPointsCurve_Len
+	print("wybrano allPointsPolLen")
 	#Part.show(wireLen)
 else:
 	generatePoints=allPoints
+	print("wybrano allPoints")
 	#Part.show(wireAll)
 
 

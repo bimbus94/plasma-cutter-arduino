@@ -41,7 +41,7 @@ StepperModel xAxisStepper(
     XAXIS_SLP_PIN, XAXIS_RST_PIN,
     XAXIS_VMS1, XAXIS_VMS2, XAXIS_VMS3,
     XAXIS_MIN_STEPCOUNT, XAXIS_MAX_STEPCOUNT,
-    XAXIS_STEPS_PER_FULL_ROTATION, XAXIS_MICROSTEPPING, XAXIS_GEAR_RATIO, DEFAULT_DIAMETER);
+    XAXIS_STEPS_PER_FULL_ROTATION, XAXIS_MICROSTEPPING, XAXIS_GEAR_RATIO);
 
 StepperModel rotationStepper(
     YAXIS_DIR_PIN, YAXIS_STEP_PIN, YAXIS_ENABLE_PIN, YAXIS_ENDSTOP_PIN,
@@ -49,7 +49,7 @@ StepperModel rotationStepper(
     YAXIS_SLP_PIN, YAXIS_RST_PIN,
     YAXIS_VMS1, YAXIS_VMS2, YAXIS_VMS3,
     YAXIS_MIN_STEPCOUNT, YAXIS_MIN_STEPCOUNT,
-    YAXIS_STEPS_PER_FULL_ROTATION, YAXIS_MICROSTEPPING, YAXIS_GEAR_RATIO, DEFAULT_DIAMETER);
+    YAXIS_STEPS_PER_FULL_ROTATION, YAXIS_MICROSTEPPING, YAXIS_GEAR_RATIO);
 
 SoftwareServo servo;
 boolean servoEnabled=true;
@@ -79,8 +79,6 @@ double currentOffsetX = 0.;
 double currentOffsetY = 0.;
 boolean absoluteMode = true;
 double feedrate = 1000.; // mm/minute
-
-//ZOOMY AKTUALNIE NIEUZYWANE 
 double zoom = DEFAULT_ZOOM_FACTOR;
 double xscaling = X_SCALING_FACTOR;
 double yscaling = Y_SCALING_FACTOR;
@@ -161,8 +159,6 @@ void doInterrupt()
     }
 }
 
-
-//SPRAWDZIC CZY BEDZIE DZIALAC Z STOPNIAMI I RADIANIAMI
 void commitSteppers(double speedrate)
 {
     long deltaStepsX = xAxisStepper.delta;
@@ -268,6 +264,10 @@ void startMenu()
 }
 
 
+
+
+
+
 void CamModule()
 {
     double diameter;
@@ -300,7 +300,7 @@ void CamModule()
         {
             if (key == 42)
             {
-
+//memset(entryStr, 0, sizeof(entryStr));
                 i=0;
                 key=0;
                 entryStr[i]=key;
@@ -326,7 +326,7 @@ void CamModule()
             }
             else
             {
-
+//lcd.println("");
                 key=0;
                 entryStr[i]=key;
                 i=0;
@@ -342,6 +342,9 @@ void CamModule()
     lcd.print("Podana srednica:");
     lcd.setCursor(0,1);
     diameter_temp = entryStr;
+    //memset(entryStr, 0, sizeof(entryStr));
+    //fileName = fileName + ".txt";
+    //sscanf(entryStr, "%d", &diameter);
     diameter=atof(diameter_temp);
     lcd.println(diameter_temp);
     delay(2000);
@@ -364,7 +367,7 @@ void CamModule()
         {
             if (key == 42)
             {
-
+//memset(entryStr, 0, sizeof(entryStr));
                 i=0;
                 key=0;
                 entryStr[i]=key;
@@ -390,7 +393,7 @@ void CamModule()
             }
             else
             {
-
+//lcd.println("");
                 key=0;
                 entryStr[i]=key;
                 i=0;
@@ -406,7 +409,9 @@ void CamModule()
     lcd.print("Podany X:");
     lcd.setCursor(0,1);
     start_pointX_temp = entryStr;
-
+    //memset(entryStr, 0, sizeof(entryStr));
+    //fileName = fileName + ".txt";
+    //sscanf(entryStr, "%d", &start_pointX);
     start_pointX=atof(start_pointX_temp);
     lcd.println(start_pointX_temp);
     delay(2000);
@@ -427,7 +432,7 @@ void CamModule()
         {
             if (key == 42)
             {
-
+//memset(entryStr, 0, sizeof(entryStr));
                 i=0;
                 key=0;
                 entryStr[i]=key;
@@ -453,7 +458,7 @@ void CamModule()
             }
             else
             {
-
+//lcd.println("");
                 key=0;
                 entryStr[i]=key;
                 i=0;
@@ -469,7 +474,9 @@ void CamModule()
     lcd.print("Podany Y:");
     lcd.setCursor(0,1);
     start_pointY_temp = entryStr;
-
+    //memset(entryStr, 0, sizeof(entryStr));
+    //fileName = fileName + ".txt";
+    //sscanf(entryStr, "%d", &start_pointY);
     start_pointY=atof(start_pointY_temp);
     lcd.println(start_pointY_temp);
     delay(2000);
@@ -489,7 +496,7 @@ void CamModule()
         {
             if (key == 42)
             {
-
+//memset(entryStr, 0, sizeof(entryStr));
                 i=0;
                 key=0;
                 entryStr[i]=key;
@@ -515,7 +522,7 @@ void CamModule()
             }
             else
             {
-
+//lcd.println("");
                 key=0;
                 entryStr[i]=key;
                 i=0;
@@ -531,7 +538,9 @@ void CamModule()
     lcd.print("Podany kat ciecia 0-90:");
     lcd.setCursor(0,1);
     cut_angle_temp = entryStr;
-
+    //memset(entryStr, 0, sizeof(entryStr));
+    //fileName = fileName + ".txt";
+    //sscanf(entryStr, "%d", &cut_angle);
     lcd.println(cut_angle_temp);
     cut_angle=atof(cut_angle_temp);
     cut_angle=cut_angle/180.0*M_PI;
@@ -551,7 +560,7 @@ void CamModule()
         {
             if (key == 42)
             {
-
+//memset(entryStr, 0, sizeof(entryStr));
                 i=0;
                 key=0;
                 entryStr[i]=key;
@@ -577,7 +586,7 @@ void CamModule()
             }
             else
             {
-
+//lcd.println("");
                 key=0;
                 entryStr[i]=key;
                 i=0;
@@ -593,7 +602,9 @@ void CamModule()
     lcd.print("Podaj promien:");
     lcd.setCursor(0,1);
     cut_radius_temp = entryStr;
-
+    //memset(entryStr, 0, sizeof(entryStr));
+    //fileName = fileName + ".txt";
+    //sscanf(entryStr, "%d", &cut_radius);
     cut_radius = atof( cut_radius_temp);
     lcd.println(cut_radius_temp);
     Serial.println(cut_radius);
@@ -607,17 +618,23 @@ void CamModule()
     double tempI2;
     double tempJ1;
     double tempJ2;
-
+//String StrUno;
+//String StrDos;
     double  tempX3;
     double tempY3;
 
 
 
+    int sValor = 2;
+    String StrUno = "Valor Sensor N°5: ";
+    String StrDos = StrUno + sValor ;
+    Serial.println(StrDos);
+
     SD.remove("cam_mod");
     myFile = SD.open("cam_mod", FILE_WRITE);
     myFile.println("G90");
-    myFile.println("G20");
-
+//StrUno="M401S";
+//StrDos=diameter;
     myFile.print("M401S");
     myFile.println(diameter);
     myFile.print("G0X");
@@ -626,7 +643,54 @@ void CamModule()
     myFile.println(start_pointY);
     myFile.println("M300S90");
 
+//myFile.print(diameter);
+// stara wersja, robila okregi, nie zwazajac na rzutowania
+/* old cut radius
+    if( cut_radius != 0)
+    {
+        tempX1=start_pointX-2*cut_radius*sin(cut_angle);
+        tempY1=start_pointY+2*cut_radius*cos(cut_angle);
 
+        //Serial.println(tempX1);
+        tempI1=start_pointX-cut_radius*sin(cut_angle);
+        tempJ1=start_pointY+cut_radius*cos(cut_angle);
+
+        tempX3=start_pointX-(M_PI*diameter/2)*tan(cut_angle);
+        tempY3=start_pointY+M_PI*diameter/2;
+
+        tempX2=tempX3+2*cut_radius*sin(cut_angle);
+        tempY2=tempY3+2*cut_radius*cos(cut_angle);
+
+        tempI2=tempX3+cut_radius*sin(cut_angle);
+        tempJ2=tempY3+cut_radius*cos(cut_angle);
+
+        myFile.print("G3X");
+        myFile.print(tempX1);
+        myFile.print("Y");
+        myFile.print(tempY1);
+        myFile.print("I");
+        myFile.print(tempI1);
+        myFile.print("J");
+        myFile.println(tempJ1);
+        myFile.print("G1X");
+        myFile.print(tempX3);
+        myFile.print("Y");
+        myFile.println(tempY3);
+        myFile.print("G3X");
+        myFile.print(tempX2);
+        myFile.print("Y");
+        myFile.print(tempY2);
+        myFile.print("I");
+        myFile.print(tempI2);
+        myFile.print("J");
+        myFile.println(tempJ2);
+
+
+
+
+
+
+*/
 double d=0; // przesuniecie osi miedzy otworem a cylindrem
 if( cut_radius != 0)
 {		
@@ -647,7 +711,8 @@ if( cut_radius != 0)
     
     else if(cut_radius == 0)
     {
-
+        //tempX3=start_pointX-(M_Pi*diameter/2)*tan(cut_angle);
+       //tempY3=start_pointY+M_PI*diameter/2;
 	   for(double alpha_y=0;alpha_y<2*M_PI;alpha_y=alpha_y+2*M_PI/20){
 	   tempX3=start_pointX+diameter/2*tan(cut_angle)*sin(alpha_y);
 	   tempY3=start_pointY+alpha_y*diameter/2;
@@ -657,7 +722,14 @@ if( cut_radius != 0)
         myFile.println(tempY3);
 	   }
 
-
+		/*
+        tempX2=start_pointX;
+        tempY2=start_pointY+M_PI*diameter;
+        myFile.print("G1X");
+        myFile.print(tempX2);
+        myFile.print("Y");
+        myFile.println(tempY2);
+		*/
 
     }
 
@@ -669,6 +741,19 @@ if( cut_radius != 0)
 
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -692,7 +777,7 @@ void getFileName()
         {
             if (key == 42)
             {
-
+//memset(entryStr, 0, sizeof(entryStr));
                 i=0;
                 key=0;
                 entryStr[i]=key;
@@ -718,7 +803,7 @@ void getFileName()
             }
             else
             {
-
+//lcd.println("");
                 key=0;
                 entryStr[i]=key;
                 i=0;
@@ -734,7 +819,8 @@ void getFileName()
     lcd.print("Wpisany program:");
     lcd.setCursor(0,1);
     fileName = entryStr;
-
+    //memset(entryStr, 0, sizeof(entryStr));
+    //fileName = fileName + ".txt";
 
     lcd.println(fileName);
     delay(2000);
@@ -749,7 +835,7 @@ void get_command()
 {
 
 
-
+//getFileName();
 
 
 
@@ -964,14 +1050,9 @@ void process_commands(char command[], int command_length) // deals with standard
                 }
                 break;
                 
-            case 20: // G20, Y in mm
-                rotationStepper.resetSteppersForMoveType(1);
+            case 20: // G20, Y in degree
                 break;
-            case 21: // G21, Y in rad
-            	rotationStepper.resetSteppersForMoveType(2);
-                break;
-            case 22: // G22, Y in deg
-            	rotationStepper.resetSteppersForMoveType(3);
+            case 21: // G21, Y in mm
                 break;
             case 90: // G90, Absolute Positioning
                 absoluteMode = true;
@@ -980,8 +1061,6 @@ void process_commands(char command[], int command_length) // deals with standard
                 absoluteMode = false;
                 break;
             case 92: // G92 homing
-                xAxisStepper.autoHoming();
-                rotationStepper.autoHoming();
                 break;
             }
         }
@@ -1040,7 +1119,6 @@ void process_commands(char command[], int command_length) // deals with standard
                 }
                 break;
 
-            //DO USUNIECIA
             case 402: // Propretary: Reset Y-Axis-Stepper settings to new object diameter
                 if(getValue('S', command, &value))
                 {

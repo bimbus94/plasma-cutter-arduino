@@ -7,8 +7,6 @@
  * PINS
  */
 
-
-
 // Y-Axis
 #define YAXIS_DIR_PIN 4
 #define YAXIS_STEP_PIN 3
@@ -52,7 +50,7 @@
 /*
  * Other Configuration
  */
-#define DEFAULT_DIAMETER 100
+
 #define DEFAULT_PEN_UP_POSITION 35
 
 //WYWALIC ZOOMY!
