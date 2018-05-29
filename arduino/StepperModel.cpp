@@ -31,7 +31,8 @@ StepperModel::StepperModel(
         bool vms1, bool vms2, bool vms3, 
         long minSC, long maxSC,
         double in_kStepsPerRevolution, int in_kMicroStepping, int in_gearRatio,
-		double in_defaultDiameter)
+		double in_defaultDiameter,
+		int in_endStopType) // 0-mechanical endstop, 1 -optical endstop
 {
   kStepsPerRevolution=in_kStepsPerRevolution;
   kMicroStepping=in_kMicroStepping;
@@ -52,6 +53,8 @@ StepperModel::StepperModel(
   maxStepCount=maxSC;
 
   defaultDiameter=in_defaultDiameter;
+
+  endStopType=in_endStopType;
 
   
   pinMode(dirPin, OUTPUT);  
@@ -101,7 +104,7 @@ StepperModel::StepperModel(
 //liczba krokow na 1 stopien
   steps_per_deg=(int)((kStepsPerRevolution/(360))*kMicroStepping*gearRatio+0.5);
 
-  steps_per=step_per_mm;
+  steps_per=steps_per_mm;
 
   enableStepper(false);
 }
@@ -109,7 +112,7 @@ StepperModel::StepperModel(
 void StepperModel::resetSteppersForObjectDiameter(double diameter)
 {
   // Calculate the motor steps required to move per mm.
-  steps_per_mm = (int)((kStepsPerRevolution/(diameter*M_PI))*kMicroStepping*gearRation+0.5);
+  steps_per_mm = (int)((kStepsPerRevolution/(diameter*M_PI))*kMicroStepping*gearRatio+0.5);
   steps_per=steps_per_mm;
   
   if(endStopPin>=0)
@@ -133,13 +136,12 @@ void StepperModel::resetSteppersForMoveType(int type)
   else if (type==2){steps_per=steps_per_rad;}
    // Calculate the motor steps required to move per 1 degree
   else if (type==3){steps_per=steps_per_deg;}
-  else {break;}
-
+  
   if(endStopPin>=0)
   {
-#ifdef AUTO_HOMING
+//#ifdef AUTO_HOMING
     autoHoming();
-#endif
+//#endif
     enableStepper(false);
   }
   else
@@ -233,19 +235,32 @@ void StepperModel::doStep(long intervals)
   }
 }  
 
-#ifdef AUTO_HOMING
+//#ifdef AUTO_HOMING
 void StepperModel::autoHoming()
 {
   enableStepper(true);
   digitalWrite(dirPin, LOW);
- 
-  while(digitalRead(endStopPin))
-  {
+ if (endStopType==0) //MECHANICAL ENDSTOP
+ {
+  	while(digitalRead(endStopPin))
+  		{
+        digitalWrite(stepPin, HIGH);
+        digitalWrite(stepPin, LOW);
+        delay(2);
+  		}
+}
+
+else //OPTICAL ENDSTOP
+{
+	  while(!(digitalRead(endStopPin)))
+  		{
         digitalWrite(stepPin, HIGH);
         digitalWrite(stepPin, LOW);
         delay(1);
-  }
+  		}
+
+}
 
   currentStepcount= minStepCount-16;
 }
-#endif
+//#endif

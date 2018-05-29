@@ -37,6 +37,7 @@ private:
   int ms3Pin;
   
   int endStopPin;
+  int endStopType;
   
   long minStepCount;
   long maxStepCount;
@@ -72,14 +73,15 @@ public:
         bool vms1, bool vms2, bool vms3, 
         long minSC, long maxSC,
         double in_kStepsPerRevolution, int in_kMicroStepping, int in_gearRatio,
-        double in_defaultDiameter);
+        double in_defaultDiameter,
+        int in_endStopType);
   
   void resetSteppersForObjectDiameter(double diameter);
   void resetSteppersForMoveType(int type);
   
-#ifdef AUTO_HOMING
+//#ifdef AUTO_HOMING
   void autoHoming();
-#endif
+//#endif
 
   
   void setTargetPosition(double pos);
