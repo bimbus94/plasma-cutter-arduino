@@ -8,6 +8,9 @@ To do:
 -przetesowanie poprawności działania różnych typów odmierzania odległości w osi obrotowej Y (mm,rad,stopnie)
 
 
+-dodanie endstopów (Y-optyczny?, X-mechaniczny???)
+
+
 -dostosowanie CamModule do nowych typów odmierzania odległości
 
 

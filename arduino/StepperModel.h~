@@ -62,7 +62,6 @@ private:
   volatile bool direction;
  
   long getStepsForMM(double mm);
-  long getStepsForMMinMM(double mm);
  
 public:
   volatile long delta;
@@ -78,7 +77,7 @@ public:
         long minSC, long maxSC,
         double in_kStepsPerRevolution, int in_kMicroStepping, int in_gearRatio,
         double in_defaultDiameter,
-        int in_endStopType,
+        int in_endStopType
 	int in_moveType);
   
   void resetSteppersForObjectDiameter(double diameter);
