@@ -75,7 +75,7 @@ Schemat podłączenia elementów do płytki Arduino i zestaw części można zna
 
 6. Określ wartości w pliku config.h. Określ przełożeń mechanicznych silników (GEAR_RATIO), określ microstepping domyślnie jest równy 16 i wartości pinów MS1,MS2,MS3 są ustawione na HIGH (VMS1 HIGH , VMS2 HIGH ,VMS3 HIGH). Patrz opisy microstepping do sterników silników np.: do sterownika A4988. Jeśli zmieniałeś PINy, zmień ich numery w config.h. Możesz zmienić rodzaje endstopów itd.
 
-7. Określ domyślną średnicę dla obu silników (DEFAULT_DIAMETER). Informuje ona o tym jak o ile zmieni się położenie w [mm] głowicy wycinarki w danym kierunku po 1 obrocie silnika. 1 obrót = Pi * DeafultDiameter. W przypadku osi Y średnica ta jest po prostu równa średnicy ciętej rury i jest modyfikowana za pomocą gcodu **M401S...** . W przypadku osi X na 1 obrót będzie przypadać np.: skok śruby trapezowej, więc DefaultDiameter=(skok śruby trapezowej)/PI.
+7. Określ domyślną średnicę dla obu silników (DEFAULT_DIAMETER). Informuje ona o tym jak o ile zmieni się położenie w [mm] głowicy wycinarki w danym kierunku po 1 obrocie silnika. 1 obrót = Pi * DeafultDiameter. W przypadku osi Y średnica ta jest po prostu równa średnicy ciętej rury i jest modyfikowana za pomocą gcodu **M401S...** . W przypadku osi X na 1 obrót będzie przypadać np.: skok śruby trapezowej, więc DefaultDiameter=(skok śruby trapezowej)/PI. Odpowiednie dobrane średnice zapewniają synchronizacje silników, także gdy oś Y podana jest w stopniach.
 
 8. Wgraj program do swojego Arduino
 
@@ -121,6 +121,22 @@ Polega na odczycie komend GCode z pliku zapisanego na karcie microSD. Gcode w ta
 
 #### 3.3.2 Tryb wprowadzania (CamModule)
 Tryb umożliwiający wycięcie połowy otworu prostopadłego do osi rury o wybranej średnicy na końcy rury lub ucięcie rury płaszczyzną, na podstawie danych wprowadzonych przez użytkownika w trybie interaktywnym za pomocą membranowej klawiatury. W tym przypadku nie potrzeba ręcznego pisania Gcode, ani jego generacji w komputerze, lecz jest on tworzony już w Arduino. Więcej na jego temat [Opis trybu wprowadznia](przydatne_pdfy/tryb_wprowadzania.pdf) oraz matematyczne zależności, na których został oparty [Artykuł o rozwijaniu krzywej na cylindrze](przydatne_pdfy/apostol_unwrapping.pdf.pdf)
+
+
+## 4. [Makra do generacji geometrii ciętej rury i generacji GCode we FreeCadzie](FreecadMakro)
+### 4.1 Instalacja
+Do działania makr potrzebny jest zainstalowany FreeCad w wersji >=0.17 (https://www.freecadweb.org/wiki/Download)
+Instrukcje instalacji makr przedstawiono w [Instrukcja do makr](FreecadMakro/instrukcja.pdf) , natomiast same makra można ściągnąć z [Makra](FreecadMakro). Interesują nas tylko pliki z roszerzeniem .FCMacro, natomiast te z rozszerzeniem Pythona zostały dodane, by łatwiej było przeglądać i edytować kod makra.
+
+### 4.2 Makro do generacji geometrii rury
+Makro pozwala na generację geometrii rury o zadanej przez użytkownika średnicy, grubości, długości, która może być przecięta drugą rurą o dowolnych wymiarach, orientacji w przestrzeni lub może być odcięta płaszczyzną o dowolnej orientacji w przestrzeni. Dane wprowadza się za pomocą przyjaznego w użytkowaniu okna, które zostało stworzone w PySide na podstawie tutoriali(
+https://www.freecadweb.org/wiki/PySide
+
+https://www.freecadweb.org/wiki/PySide_Medium_Examples)
+
+Po wprowadzeniu danych generowana jest geometria za pomocą skryptów we FreeCadzie (w Pythonie). Więcej informacji o skryptowaniu we Freecadzie (https://www.freecadweb.org/wiki/Python_scripting_tutorial)
+
+Makro składa się z 2-óch części. Pierwsza odpowiada
 
  
 
