@@ -16,7 +16,7 @@ Warto dodać główne założenie projektu: cięta rura jest nieruchoma, a wzdł
 ## 2. Schemat podłączenia
 Schemat podłączenia elementów do płytki Arduino i zestaw części można znaleźć na schemacie [Schemat podłączenia](projekt_sterowania_wycinarka_plazmowa.pdf)
 
-## 3. Kod Arduino
+## 3. [Kod Arduino](arduino)
 ### 3.1 Zalety i wady
 +Wycinarka wykonuje swoją pracę na podstawie GCode, który jest przekazywany na karcie microSD (działa bez komputer).
 
@@ -34,7 +34,11 @@ Schemat podłączenia elementów do płytki Arduino i zestaw części można zna
 
 +Możliwość łatwego przekształcenia na ploter XY w [mm]
 
++Możliwość ustalenia maksymalnego zakresu obu silników -> zabezpieczenie przed zaplątaniem i zerwaniem kabli
+
 -Konieczność zdefiniowania odpowiednich średnic, które informują o tym jaką zmianę położenia palnika powoduje jeden obrót silnika (omówione zostanie w rozdziale o uruchomieniu programu!!), by zapewnić odpowiednią synchronizację silników.
+
+-Brak awaryjnego przycisku STOP, który wyłączyłby palnik (ruch serwem na 0) oraz silniki
 
 ### 3.2 Tryby pracy
 #### 3.2.1 Tryb odczytu
