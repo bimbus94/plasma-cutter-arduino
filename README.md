@@ -1,30 +1,3 @@
-# plasma-cutter-arduino
+# Wycinarka plazmowa do rur oparta na Arduino v0.1
 
-To do:
-
--zewnętrzny przycisk reset i awaryjny stop
-
-
--przetesowanie poprawności działania różnych typów odmierzania odległości w osi obrotowej Y (mm,rad,stopnie)
-
-
--dostosowanie CamModule do nowych typów odmierzania odległości
-
-
--dodanie prawidłowych współczynników przełożeń silników
-
-
--poprawa makra, by było w 100% kompatybilne z arduino
-
-
--funkcja drawRadius do rysowania promenii
-
--PRZETESTOWANIE NA PROTOTYPIE
-
-
--przemyślenie obudowy
-
-
--ZŁOŻENIE UKŁADU
-
--OPIS KODU, INSTRUKCJE DZIAŁANIA ETC.
+## 1. Wstęp
