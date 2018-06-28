@@ -7,4 +7,4 @@ Wyjściowym kodem do oprogramowania był kod SPhereBota z repozytorium: https://
 
 Pod względem mechanicznym wycinarka była oparta na projekcie: https://www.youtube.com/watch?v=qnYNEfv5IaY
 
-Raport z prac i projektu pod względem mechanicznym można znaleźć w folderze przydatne_pdfy/raport_z_czesci_prac
+Rozwiązania mechaniczne, umiejscowienie silników i ogólny wygląd i opis maszyny można znaleźć w folderze przydatne_pdfy/Raport_z_czesci_prac.pdf, przy czym pod względem [Contribution guidelines for this project](przydatne_pdfy/Raport_z_czesci_prac.pdf)
