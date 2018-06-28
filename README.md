@@ -45,14 +45,20 @@ Schemat podłączenia elementów do płytki Arduino i zestaw części można zna
 1. Aby uruchomić program ściągnij pliki z [Kod Arduino](arduino) . Dodatkowo będzie potrzebna zmiana nazwy pobranego folderu z arduino na wycinarka_plazmowa.
 
 2. Ściągnij i zainstaluj wszystkie niezbędne biblioteki:
-,,,
-	SoftwareServo: http://www.arduino.cc/playground/ComponentLib/Servo
-	TimerOne: http://www.arduino.cc/playground/Code/Timer1
-	Keypad.h https://playground.arduino.cc/Code/Keypad
-	LiquidCrystal.h https://playground.arduino.cc/Main/LiquidCrystal
-	SD.h https://www.arduino.cc/en/Reference/SD
-	SPI.h https://www.arduino.cc/en/reference/SPI
-,,,	
+
+	>SoftwareServo: http://www.arduino.cc/playground/ComponentLib/Servo
+	
+	>TimerOne: http://www.arduino.cc/playground/Code/Timer1
+	
+	>Keypad.h https://playground.arduino.cc/Code/Keypad
+	
+	>LiquidCrystal.h https://playground.arduino.cc/Main/LiquidCrystal
+	
+	>SD.h https://www.arduino.cc/en/Reference/SD
+	
+	>SPI.h https://www.arduino.cc/en/reference/SPI
+	
+	
 	
 3. Połącz układ tak jak przedstawiono na [Schemat podłączenia](projekt_sterowania_wycinarka_plazmowa.pdf)
 
@@ -61,11 +67,11 @@ Schemat podłączenia elementów do płytki Arduino i zestaw części można zna
 
 5. Przejżyj kody programu, które zostały dokładnie opisane komentarzami.
 
-Plik **config.h** zawiera ustawienia podłączenia pinów, deklaracje i ustawienia wartości domyślne wszystkich komponentów układu.
+	Plik **config.h** zawiera ustawienia podłączenia pinów, deklaracje i ustawienia wartości domyślne wszystkich komponentów układu.
 
-Plik **StepperModel** jest deklaracją klasy silnika i zawiera jego zmienne/ustawienia oraz funkcje za pomocą których możemy manipulować silnikiem (m.in. sterowanie ruchem, prędkością, rodzajem zmiennych, w których czytany jest GCode, autoHoming itd.)
+	Plik **StepperModel** jest deklaracją klasy silnika i zawiera jego zmienne/ustawienia oraz funkcje za pomocą których możemy manipulować silnikiem (m.in. sterowanie ruchem, prędkością, rodzajem zmiennych, w których czytany jest GCode, autoHoming itd.)
 
-Plik **wycinarka_plazmowa.ino** zawiera główny program wycinarki.
+	Plik **wycinarka_plazmowa.ino** zawiera główny program wycinarki.
 
 
 
