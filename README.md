@@ -128,12 +128,12 @@ Tryb umożliwiający wycięcie połowy otworu prostopadłego do osi rury o wybra
 Do działania makr potrzebny jest zainstalowany FreeCad w wersji >=0.17 (https://www.freecadweb.org/wiki/Download)
 Instrukcje instalacji makr przedstawiono w [Instrukcja do makr](FreecadMakro/instrukcja.pdf) , natomiast same makra można ściągnąć z [Makra](FreecadMakro). Interesują nas tylko pliki z roszerzeniem .FCMacro, natomiast te z rozszerzeniem Pythona zostały dodane, by łatwiej było przeglądać i edytować kod makra.
 
-### 4.2 Makro do generacji geometrii rury
+### 4.2 [Makro do generacji geometrii rury](FreecadMakro/Generacja_geometrii_wycinarka_plazmowa.py)
 Makro pozwala na generację geometrii rury o zadanej przez użytkownika średnicy, grubości, długości, która może być przecięta drugą rurą o dowolnych wymiarach, orientacji w przestrzeni lub może być odcięta płaszczyzną o dowolnej orientacji w przestrzeni. Dane wprowadza się za pomocą przyjaznego w użytkowaniu okna, które zostało stworzone w PySide na podstawie tutoriali (https://www.freecadweb.org/wiki/PySide_Medium_Examples).
 
 Po wprowadzeniu danych generowana jest geometria za pomocą skryptów we FreeCadzie (w Pythonie). Więcej informacji o skryptowaniu we Freecadzie (https://www.freecadweb.org/wiki/Python_scripting_tutorial)
 
-### 4.3 Makro do generacji GCode
+### 4.3 [Makro do generacji GCode](Generator_Gcode_do_wycinarki.py)
 Przed uruchomieniem makra do generacji GCode trzeba wybrać krzywe, które będą użyte do generacji GCode!
 
 Makro najpierw dyskretyzuje krzywą na zadaną przez użytkownika liczbę punktów, a następnie transformuje punkty do oczekiwanej przez użytkownika formy.
