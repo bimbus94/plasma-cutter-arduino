@@ -138,13 +138,15 @@ Przed uruchomieniem makra do generacji GCode trzeba wybrać krzywe, które będ�
 
 Makro najpierw dyskretyzuje krzywą na zadaną przez użytkownika liczbę punktów, a następnie transformuje punkty do oczekiwanej przez użytkownika formy.
 
-Dostępne formy to (we wszystkich przypadkach współrzędna X - wzdłuż osi ciętej rury pozostaje bez zmian i jest wyrażona w [mm]:
+Dostępne formy to:
 
--Y wyrażone postaci rozwiniętej krzywej na rurze (powstaje w wyniku transformacji zmiennych Y,Z z kartezjańskich na polarne) w zakresie od 0-Pi * D lub od -PI * D/2 - PI * D/2 [mm]
+>(we wszystkich przypadkach współrzędna X - wzdłuż osi ciętej rury pozostaje bez zmian i jest wyrażona w [mm]):
 
--Y wyrażone w stopniach (powstaje w wyniku transformacji zmiennych Y,Z z kartezjańskich na polarne z pominięciem promienia) w zakresie 0-360 stopni lub -180 - 180 stopni
+>-Y wyrażone postaci rozwiniętej krzywej na rurze (powstaje w wyniku transformacji zmiennych Y,Z z kartezjańskich na polarne) w zakresie od 0-Pi * D lub od -PI * D/2 - PI * D/2 [mm]
 
--Y pozostawione bez zmian w [mm], a współrzędne Z całkowicie pominięta
+>-Y wyrażone w stopniach (powstaje w wyniku transformacji zmiennych Y,Z z kartezjańskich na polarne z pominięciem promienia) w zakresie 0-360 stopni lub -180 - 180 stopni
+
+>-Y pozostawione bez zmian w [mm], a współrzędne Z całkowicie pominięta
 
 
 
