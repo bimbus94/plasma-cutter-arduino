@@ -133,13 +133,14 @@ Makro pozwala na generację geometrii rury o zadanej przez użytkownika średnic
 
 Po wprowadzeniu danych generowana jest geometria za pomocą skryptów we FreeCadzie (w Pythonie). Więcej informacji o skryptowaniu we Freecadzie (https://www.freecadweb.org/wiki/Python_scripting_tutorial)
 
-![wycinarka](img/generator_geometrii.png)
-![wycinarka](img/rura.png)
+![geometria](img/generator_geometrii.png)
+![rura](img/rura.png)
 
 ### 4.3 [Makro do generacji GCode](Generator_Gcode_do_wycinarki.py)
 Przed uruchomieniem makra do generacji GCode trzeba wybrać krzywe, które będą użyte do generacji GCode!
 
 Makro najpierw dyskretyzuje krzywą na zadaną przez użytkownika liczbę punktów, a następnie transformuje punkty do oczekiwanej przez użytkownika formy.
+![gcode](img/generator.png)
 
 Dostępne formy to:
 
@@ -178,7 +179,7 @@ Pliki należy zapisywać pod nazwą tylko z cyframi 1-9, bo później trzeba pod
 
 Makro do generacji GCode może działać bez makra do generacji geometrii i być wykorzystywane w innych rozwiązaniach, także ono zostało wyposażone w okno do wprowadzania danych (napisane w PySide).
 
-![wycinarka](img/generator.png)
+
 
  
 
