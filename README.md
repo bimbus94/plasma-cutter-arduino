@@ -9,3 +9,6 @@ Pod względem mechanicznym wycinarka była oparta na projekcie: https://www.yout
 
 Rozwiązania mechaniczne, umiejscowienie silników i ogólny wygląd i opis maszyny można znaleźć w [Raport z części prac](przydatne_pdfy/Raport_z_czesci_prac.pdf) , przyczym pod względem sterowania program uległ znacznym zmianom w porównaniu do opis z przełomu 2017/2018, dodatkowo opracowano makra nie uwzględnione w tamtym raporcie.
 
+![wycinarka](img/wycinarka.png)
+
+
