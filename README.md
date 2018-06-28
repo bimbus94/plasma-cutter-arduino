@@ -42,9 +42,9 @@ Schemat podłączenia elementów do płytki Arduino i zestaw części można zna
 
 
 ### 3.2 Jak zacząć
-Aby uruchomić program ściągnij pliki z [Kod Arduino](arduino) . Dodatkowo będzie potrzebna zmiana nazwy pobranego folderu z arduino na wycinarka_plazmowa.
+1.Aby uruchomić program ściągnij pliki z [Kod Arduino](arduino) . Dodatkowo będzie potrzebna zmiana nazwy pobranego folderu z arduino na wycinarka_plazmowa.
 
-Ściągnij i zainstaluj wszystkie niezbędne biblioteki:
+2.Ściągnij i zainstaluj wszystkie niezbędne biblioteki:
 
 	SoftwareServo: http://www.arduino.cc/playground/ComponentLib/Servo
 	TimerOne: http://www.arduino.cc/playground/Code/Timer1
@@ -52,6 +52,14 @@ Aby uruchomić program ściągnij pliki z [Kod Arduino](arduino) . Dodatkowo bę
 	LiquidCrystal.h https://playground.arduino.cc/Main/LiquidCrystal
 	SD.h https://www.arduino.cc/en/Reference/SD
 	SPI.h https://www.arduino.cc/en/reference/SPI
+	
+3.Połącz układ tak jak przedstawiono na [Schemat podłączenia](projekt_sterowania_wycinarka_plazmowa.pdf)
+
+4.Ustaw odpowiednie napięcie na sterownikach silników w zależności od modelu:
+(https://howtomechatronics.com/tutorials/arduino/how-to-control-stepper-motor-with-a4988-driver-and-arduino/)
+
+5.
+
 
 ### 3.3 Tryby pracy
 #### 3.3.1 Tryb odczytu
