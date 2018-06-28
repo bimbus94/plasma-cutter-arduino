@@ -73,7 +73,9 @@ Schemat podłączenia elementów do płytki Arduino i zestaw części można zna
 
 	Plik **wycinarka_plazmowa.ino** zawiera główny program wycinarki.
 
+6. Określ wartości w pliku config.h. Określ przełożeń mechanicznych silników (GEAR_RATIO), określ microstepping domyślnie jest równy 16 i wartości pinów MS1,MS2,MS3 są ustawione na HIGH (VMS1 HIGH , VMS2 HIGH ,VMS3 HIGH). Patrz opisy microstepping do sterników silników np.: do sterownika A4988. Jeśli zmieniałeś PINy, zmień ich numery w config.h. Możesz zmienić rodzaje endstopów itd.
 
+7. Określ domyślną średnicę dla obu silników (DEFAULT_DIAMETER). Informuje ona o tym jak o ile zmieni się położenie w [mm] głowicy wycinarki w danym kierunku po 1 obrocie silnika. 1 obrót = Pi * DeafultDiameter. W przypadku osi Y średnica ta jest po prostu równa średnicy ciętej rury i jest modyfikowana za pomocą gcodu **M401S...** . W przypadku osi X na 1 obrót będzie przypadać np.: skok śruby trapezowej, więc DefaultDiameter=(skok śruby trapezowej)/PI.
 
 ### 3.3 Tryby pracy
 #### 3.3.1 Tryb odczytu
