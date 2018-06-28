@@ -129,14 +129,12 @@ Do działania makr potrzebny jest zainstalowany FreeCad w wersji >=0.17 (https:/
 Instrukcje instalacji makr przedstawiono w [Instrukcja do makr](FreecadMakro/instrukcja.pdf) , natomiast same makra można ściągnąć z [Makra](FreecadMakro). Interesują nas tylko pliki z roszerzeniem .FCMacro, natomiast te z rozszerzeniem Pythona zostały dodane, by łatwiej było przeglądać i edytować kod makra.
 
 ### 4.2 Makro do generacji geometrii rury
-Makro pozwala na generację geometrii rury o zadanej przez użytkownika średnicy, grubości, długości, która może być przecięta drugą rurą o dowolnych wymiarach, orientacji w przestrzeni lub może być odcięta płaszczyzną o dowolnej orientacji w przestrzeni. Dane wprowadza się za pomocą przyjaznego w użytkowaniu okna, które zostało stworzone w PySide na podstawie tutoriali(
-https://www.freecadweb.org/wiki/PySide
-
-https://www.freecadweb.org/wiki/PySide_Medium_Examples)
+Makro pozwala na generację geometrii rury o zadanej przez użytkownika średnicy, grubości, długości, która może być przecięta drugą rurą o dowolnych wymiarach, orientacji w przestrzeni lub może być odcięta płaszczyzną o dowolnej orientacji w przestrzeni. Dane wprowadza się za pomocą przyjaznego w użytkowaniu okna, które zostało stworzone w PySide na podstawie tutoriali (https://www.freecadweb.org/wiki/PySide_Medium_Examples).
 
 Po wprowadzeniu danych generowana jest geometria za pomocą skryptów we FreeCadzie (w Pythonie). Więcej informacji o skryptowaniu we Freecadzie (https://www.freecadweb.org/wiki/Python_scripting_tutorial)
 
-Makro składa się z 2-óch części. Pierwsza odpowiada
+### 4.3 Makro do generacji GCode
+
 
  
 
