@@ -150,7 +150,7 @@ Dostępne formy to:
 
 Po przekształceniach z punktów generowany jest GCode, który może być dowolnie modyfikowany. Jest to zwykły zapis do pliku w Pythonie, więc dowolnie można układać komendy Gcode. 
 
-Mogą występować **problemy z zapisem pliku**. Jeśli występują to należy ustawić stałą ścieżkę dostępu (zmienna **path**), w której będzie zapisywany nasz plik z Gcodem. Możliwe, że konieczna będzie także zmiana kąta pozycji serwomechanizmu dla włączonego i wyłączonego palnika (zmienne **servoON** i **servoOFF**).
+Mogą występować **problemy z zapisem pliku**. Jeśli występują to należy ustawić stałą ścieżkę dostępu w kodzie (zmienna **path**), w której będzie zapisywany nasz plik z Gcodem. Możliwe, że konieczna będzie także zmiana kąta pozycji serwomechanizmu dla włączonego i wyłączonego palnika w kodzie (zmienne **servoON** i **servoOFF**).
 
 Domyślny schemat wygenerowanego Gcode jest następujący:
 
@@ -171,7 +171,9 @@ Domyślny schemat wygenerowanego Gcode jest następujący:
 >8. Wyłączenie silników
 
 
+Pliki należy zapisywać pod nazwą tylko z cyframi 1-9, bo później trzeba podać tę nazwę w programie sterowania na Arduino używając tylko klawiatury membranowej, numerycznej. Plik z Gcode o rozszerzeniu .txt oraz plik bez tego rozszerzenia (trzeba je usunąć ręcznie) należy skopiować na kartę microSD i włożyć do czytnika w wycinarce.
 
+Makro do generacji GCode może działać bez makra do generacji geometrii i być wykorzystywane w innych rozwiązaniach, także ono zostało wyposażone w okno do wprowadzania danych (napisane w PySide).
 
 
 
