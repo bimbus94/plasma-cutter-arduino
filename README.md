@@ -17,8 +17,24 @@ Warto dodać główne założenie projektu: cięta rura jest nieruchoma, a wzdł
 Schemat podłączenia elementów do płytki Arduino i zestaw części można znaleźć na schemacie [Schemat podłączenia](projekt_sterowania_wycinarka_plazmowa.pdf)
 
 ## 3. Kod Arduino
-### 3.1 Założenia
-Wycinarka wykonuje swoją pracę na podstawie GCode, który jest przekazywany na karcie microSD (działa bez komputer). GCode może być napisany ręcznie/ otrzymany za pomocą makra, które zostanie później omówione lub utworzony ad hoc podczas pracy wycinarki w trybie wprowadzania (omówione niżej). Program wykorzystuje ekran LCD i klawiaturę membranową do wprowadzania danych. Dodatkowo wyposażony jest w funkcje zerowania położenia silników (autoHoming) za pomocą endstopów. Serwomechanizm odpowiada natomiast za włączenie wycinarki plazmowej.
+### 3.1 Zalety i wady
++Wycinarka wykonuje swoją pracę na podstawie GCode, który jest przekazywany na karcie microSD (działa bez komputer).
+
++GCode może być napisany ręcznie/ otrzymany za pomocą makra, które zostanie później omówione lub utworzony ad hoc podczas pracy wycinarki w trybie wprowadzania (omówione niżej).Program wykorzystuje ekran LCD i klawiaturę membranową do wprowadzania danych.
+
++Dodatkowo wyposażony jest w funkcje zerowania położenia silników (autoHoming) za pomocą endstopów. 
+
++Serwomechanizm odpowiada natomiast za włączenie/wyłączanie palnika wycinarki.
+
++Krzywa może być wyrażona jako rozwinięcie na rurze, w zakresie 0-PI*ŚrednicaRury lub -PI*ŚrednicaRury/2, w [mm]
+
++Krzywa może być wyrażona w stopniach, w zakresie 0-360[deg] lub -180 - 180[deg]
+
++Krzywa może być wyrażona w radianach, w zakresie 0-2PI lub -Pi - Pi 
+
++Możliwość łatwego przekształcenia na ploter XY w [mm]
+
+-Konieczność zdefiniowania odpowiednich średnic, które informują o tym jaką zmianę położenia palnika powoduje jeden obrót silnika (omówione zostanie w rozdziale o uruchomieniu programu!!), by zapewnić odpowiednią synchronizację silników.
 
 ### 3.2 Tryby pracy
 #### 3.2.1 Tryb odczytu
