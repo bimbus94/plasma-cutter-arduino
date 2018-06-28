@@ -62,7 +62,7 @@ class WindowGcode(QtGui.QDialog):
 
 		#Nazwa pliku
 		self.fileName = QtGui.QLineEdit(self)
-		self.fileName.setText("123")
+		self.fileName.setText("123.txt")
 		self.fileName.setFixedWidth(50)
 		self.fileName.move(250, 60)
 		
@@ -331,7 +331,7 @@ else:
 #Zmienic pozycje serwa dla wlaczonego palnika - zmienna servoON (domyslnie 90 stopni) i wylaczonego - zmienna servoOFF (domyslnie 0 stopni) 
 
 import os
-path=os.getcwd()+"/"+name #domyslnie bierze sciezke do FreeCada i tworzy plik o podanej przez uzytkownika nazwie
+path=os.getcwd()+"/"+name+".txt" #domyslnie bierze sciezke do FreeCada i tworzy plik o podanej przez uzytkownika nazwie
 #dodac zmienna path
 #path='./1234.txt'
 
