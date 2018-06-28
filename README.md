@@ -18,9 +18,47 @@ Schemat podłączenia elementów do płytki Arduino i zestaw części można zna
 
 ## 3. Kod Arduino
 ### 3.1 Założenia
-Wycinarka wykonuje swoją pracę na podstawie GCode, który jest przekazywany na karcie microSD (działa bez komputer). GCode może być napisany ręcznie/ otrzymany za pomocą makra, które zostanie później omówione lub utworzony ad hoc podczas pracy wycinarki w trybie wprowadzania (omówione niżej). Program wykorzystuje ekran LCD i klawiaturę membranową do wprowadzania danych. Dodatkowo wyposażony jest w funkcje zerowania położenia silników (autoHoming) za pomocą endstopów.
+Wycinarka wykonuje swoją pracę na podstawie GCode, który jest przekazywany na karcie microSD (działa bez komputer). GCode może być napisany ręcznie/ otrzymany za pomocą makra, które zostanie później omówione lub utworzony ad hoc podczas pracy wycinarki w trybie wprowadzania (omówione niżej). Program wykorzystuje ekran LCD i klawiaturę membranową do wprowadzania danych. Dodatkowo wyposażony jest w funkcje zerowania położenia silników (autoHoming) za pomocą endstopów. Serwomechanizm odpowiada natomiast za włączenie wycinarki plazmowej.
+
 ### 3.2 Tryby pracy
-#### 3.3 Tryb odczytu
+#### 3.2.1 Tryb odczytu
+Polega na odczycie komend GCode z pliku zapisanego na karcie microSD. Gcode w takiej formie można otrzymać używając do tego stworznego w tym celu makra do FreeCada. Dostępne komendy:
+
+**G0X...Y...** Szybki ruch na współrzędne X i Y
+
+**G1X...Y...F...** Ruch roboczy na współrzędne X I Y
+
+**G1F...** F-szybkość posuwu w mm/min
+
+**G2X...Y...I...J...** Ruch po okręgu zgodnie z wskazówkami zegara, do punktu X,Y o środku w I,J (UWAGA, komenda dodana przeze mnie, więc też wymaga testów)
+
+**G3X...Y...I...J...** Ruch po okręgu przeciwnie do wskazówek zegara, do punktu X,Y o środku w I,J
+
+**G20** Oś Y wyrażona w mm, by odpowiednio odczytywać Gcode wyrażony w mm
+
+**G21** Oś Y wyrazona w radianach, by odpowiednio odczytywać Gcode wyrażony w radianach 
+
+**G22** Oś Y wyrazona w stopniach , by odpowiednio odczytywać Gcode wyrażony w stopniach
+
+**G4P...** Przerwa ... milisekund
+
+**G90** Pozycjonowanie absolutne
+
+**G91** Pozycjonowanie przyrostowe
+
+**G92** AutoHoming - zerowanie silników
+
+**M18** Wyłączenie silników
+
+**M300S...** Ustawienie serwa od 0-180
+
+**M400S...** Zmiana domyślnej średnicy osi X (średnica wynika z konstrukcji przełożenia ruchu obrotowego na postępowy)
+
+**M401S...** Zmiana domyślnej średnicy osi Y (średnica==średnica ciętej rury)
+
+#### 3.2.2 Tryb wprowadzania
+Tryb umożliwiający wycięcie połowy otworu prostopadłego do osi rury o wybranej średnicy na końcy rury lub ucięcie rury płaszczyzną, na podstawie danych wprowadzonych przez użytkownika w trybie interaktywnym za pomocą membranowej klawiatury. W tym przypadku nie potrzeba ręcznego pisania Gcode, ani jego generacji w komputerze, lecz jest on tworzony już w Arduino. Więcej na jego temat [Opis trybu wprowadznia](przydatne_pdfy/tryb_wprowadzania.pdf) oraz matematyczne zależności, na których został oparty [Artykuł o rozwijaniu krzywej na cylindrze](przydatne_pdfy/apostol_unwrapping.pdf.pdf)
+
  
 
 
