@@ -134,6 +134,20 @@ Makro pozwala na generację geometrii rury o zadanej przez użytkownika średnic
 Po wprowadzeniu danych generowana jest geometria za pomocą skryptów we FreeCadzie (w Pythonie). Więcej informacji o skryptowaniu we Freecadzie (https://www.freecadweb.org/wiki/Python_scripting_tutorial)
 
 ### 4.3 Makro do generacji GCode
+Przed uruchomieniem makra do generacji GCode trzeba wybrać krzywe, które będą użyte do generacji GCode!
+
+Makro najpierw dyskretyzuje krzywą na zadaną przez użytkownika liczbę punktów, a następnie transformuje punkty do oczekiwanej przez użytkownika formy.
+
+Dostępne formy to (we wszystkich przypadkach współrzędna X - wzdłuż osi ciętej rury pozostaje bez zmian i jest wyrażona w [mm]:
+
+-Y wyrażone postaci rozwiniętej krzywej na rurze (powstaje w wyniku transformacji zmiennych Y,Z z kartezjańskich na polarne) w zakresie od 0-Pi * D lub od -PI * D/2 - PI * D/2 [mm]
+
+-Y wyrażone w stopniach (powstaje w wyniku transformacji zmiennych Y,Z z kartezjańskich na polarne z pominięciem promienia) w zakresie 0-360 stopni lub -180 - 180 stopni
+
+-Y pozostawione bez zmian w [mm], a współrzędne Z całkowicie pominięta
+
+
+
 
 
  
