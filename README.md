@@ -148,6 +148,29 @@ Dostępne formy to:
 
 >-Y pozostawione bez zmian w [mm], a współrzędne Z całkowicie pominięta
 
+Po przekształceniach z punktów generowany jest GCode, który może być dowolnie modyfikowany. Jest to zwykły zapis do pliku w Pythonie, więc dowolnie można układać komendy Gcode. 
+
+Mogą występować **problemy z zapisem pliku**. Jeśli występują to należy ustawić stałą ścieżkę dostępu (zmienna **path**), w której będzie zapisywany nasz plik z Gcodem. Możliwe, że konieczna będzie także zmiana kąta pozycji serwomechanizmu dla włączonego i wyłączonego palnika (zmienne **servoON** i **servoOFF**).
+
+Domyślny schemat wygenerowanego Gcode jest następujący:
+
+>1. Zerowanie silników
+
+>2. Najazd szybki na pierwszy punkt krzywej
+
+>3. Włączenie palnika - servo na pozycje servoON
+
+>4. Ruchy robocze na wszystkie punkty po kolei
+
+>5. Wyłączenie palnika
+
+>6. Jeśli są inne krzywe to znowu punkty 2-5
+
+>7. Wyzerowanie silników
+
+>8. Wyłączenie silników
+
+
 
 
 
