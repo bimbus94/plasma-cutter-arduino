@@ -77,6 +77,12 @@ Schemat podłączenia elementów do płytki Arduino i zestaw części można zna
 
 7. Określ domyślną średnicę dla obu silników (DEFAULT_DIAMETER). Informuje ona o tym jak o ile zmieni się położenie w [mm] głowicy wycinarki w danym kierunku po 1 obrocie silnika. 1 obrót = Pi * DeafultDiameter. W przypadku osi Y średnica ta jest po prostu równa średnicy ciętej rury i jest modyfikowana za pomocą gcodu **M401S...** . W przypadku osi X na 1 obrót będzie przypadać np.: skok śruby trapezowej, więc DefaultDiameter=(skok śruby trapezowej)/PI.
 
+8. Wgraj program do swojego Arduino
+
+9. Napisz swój GCode korzystając z komend przedstawionych w rodziałem 3.3.1, wykorzystaj makro go generacji geometri i Gcode przedstawione poniżej i wgraj program na kartę microSD lub wykorzystaj tryb wprowadzania przedstawiony w 3.3.2.
+
+10. Uruchom wycinarkę!
+
 ### 3.3 Tryby pracy
 #### 3.3.1 Tryb odczytu
 Polega na odczycie komend GCode z pliku zapisanego na karcie microSD. Gcode w takiej formie można otrzymać używając do tego stworznego w tym celu makra do FreeCada. Dostępne komendy:
