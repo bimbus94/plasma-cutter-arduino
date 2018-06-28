@@ -140,6 +140,7 @@ Po wprowadzeniu danych generowana jest geometria za pomocą skryptów we FreeCad
 Przed uruchomieniem makra do generacji GCode trzeba wybrać krzywe, które będą użyte do generacji GCode!
 
 Makro najpierw dyskretyzuje krzywą na zadaną przez użytkownika liczbę punktów, a następnie transformuje punkty do oczekiwanej przez użytkownika formy.
+
 ![gcode](img/generator.png)
 
 Dostępne formy to:
