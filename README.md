@@ -42,9 +42,9 @@ Schemat podłączenia elementów do płytki Arduino i zestaw części można zna
 
 
 ### 3.2 Jak zacząć
-1.Aby uruchomić program ściągnij pliki z [Kod Arduino](arduino) . Dodatkowo będzie potrzebna zmiana nazwy pobranego folderu z arduino na wycinarka_plazmowa.
+1. Aby uruchomić program ściągnij pliki z [Kod Arduino](arduino) . Dodatkowo będzie potrzebna zmiana nazwy pobranego folderu z arduino na wycinarka_plazmowa.
 
-2.Ściągnij i zainstaluj wszystkie niezbędne biblioteki:
+2. Ściągnij i zainstaluj wszystkie niezbędne biblioteki:
 
 	SoftwareServo: http://www.arduino.cc/playground/ComponentLib/Servo
 	TimerOne: http://www.arduino.cc/playground/Code/Timer1
@@ -53,12 +53,16 @@ Schemat podłączenia elementów do płytki Arduino i zestaw części można zna
 	SD.h https://www.arduino.cc/en/Reference/SD
 	SPI.h https://www.arduino.cc/en/reference/SPI
 	
-3.Połącz układ tak jak przedstawiono na [Schemat podłączenia](projekt_sterowania_wycinarka_plazmowa.pdf)
+3. Połącz układ tak jak przedstawiono na [Schemat podłączenia](projekt_sterowania_wycinarka_plazmowa.pdf)
 
-4.Ustaw odpowiednie napięcie na sterownikach silników w zależności od modelu:
+4. Ustaw odpowiednie napięcie na sterownikach silników w zależności od modelu:
 (https://howtomechatronics.com/tutorials/arduino/how-to-control-stepper-motor-with-a4988-driver-and-arduino/)
 
-5.
+5. Przejżyj kody programu, które zostały dokładnie opisane komentarzami.
+Plik **config.h** zawiera ustawienia podłączenia pinów, deklaracje i ustawienia wartości domyślne wszystkich komponentów układu.
+Plik **StepperModel** jest deklaracją klasy silnika i zawiera jego zmienne/ustawienia oraz funkcje za pomocą których możemy manipulować silnikiem (m.in. sterowanie ruchem, prędkością, rodzajem zmiennych, w których czytany jest GCode, autoHoming itd.)
+Plik **wycinarka_plazmowa.ino** zawiera główny progra wycinarki.
+
 
 
 ### 3.3 Tryby pracy
@@ -97,7 +101,7 @@ Polega na odczycie komend GCode z pliku zapisanego na karcie microSD. Gcode w ta
 
 **M401S...** Zmiana domyślnej średnicy osi Y (średnica==średnica ciętej rury)
 
-#### 3.3.2 Tryb wprowadzania
+#### 3.3.2 Tryb wprowadzania (CamModule)
 Tryb umożliwiający wycięcie połowy otworu prostopadłego do osi rury o wybranej średnicy na końcy rury lub ucięcie rury płaszczyzną, na podstawie danych wprowadzonych przez użytkownika w trybie interaktywnym za pomocą membranowej klawiatury. W tym przypadku nie potrzeba ręcznego pisania Gcode, ani jego generacji w komputerze, lecz jest on tworzony już w Arduino. Więcej na jego temat [Opis trybu wprowadznia](przydatne_pdfy/tryb_wprowadzania.pdf) oraz matematyczne zależności, na których został oparty [Artykuł o rozwijaniu krzywej na cylindrze](przydatne_pdfy/apostol_unwrapping.pdf.pdf)
 
  
