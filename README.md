@@ -40,8 +40,21 @@ Schemat podłączenia elementów do płytki Arduino i zestaw części można zna
 
 -Brak awaryjnego przycisku STOP, który wyłączyłby palnik (ruch serwem na 0) oraz silniki
 
-### 3.2 Tryby pracy
-#### 3.2.1 Tryb odczytu
+
+### 3.2 Jak zacząć
+Aby uruchomić program ściągnij pliki z [Kod Arduino](arduino) . Dodatkowo będzie potrzebna zmiana nazwy pobranego folderu z arduino na wycinarka_plazmowa.
+
+Ściągnij i zainstaluj wszystkie niezbędne biblioteki:
+
+	SoftwareServo: http://www.arduino.cc/playground/ComponentLib/Servo
+	TimerOne: http://www.arduino.cc/playground/Code/Timer1
+	Keypad.h https://playground.arduino.cc/Code/Keypad
+	LiquidCrystal.h https://playground.arduino.cc/Main/LiquidCrystal
+	SD.h https://www.arduino.cc/en/Reference/SD
+	SPI.h https://www.arduino.cc/en/reference/SPI
+
+### 3.3 Tryby pracy
+#### 3.3.1 Tryb odczytu
 Polega na odczycie komend GCode z pliku zapisanego na karcie microSD. Gcode w takiej formie można otrzymać używając do tego stworznego w tym celu makra do FreeCada. Dostępne komendy:
 
 **G0X...Y...** Szybki ruch na współrzędne X i Y
@@ -76,7 +89,7 @@ Polega na odczycie komend GCode z pliku zapisanego na karcie microSD. Gcode w ta
 
 **M401S...** Zmiana domyślnej średnicy osi Y (średnica==średnica ciętej rury)
 
-#### 3.2.2 Tryb wprowadzania
+#### 3.3.2 Tryb wprowadzania
 Tryb umożliwiający wycięcie połowy otworu prostopadłego do osi rury o wybranej średnicy na końcy rury lub ucięcie rury płaszczyzną, na podstawie danych wprowadzonych przez użytkownika w trybie interaktywnym za pomocą membranowej klawiatury. W tym przypadku nie potrzeba ręcznego pisania Gcode, ani jego generacji w komputerze, lecz jest on tworzony już w Arduino. Więcej na jego temat [Opis trybu wprowadznia](przydatne_pdfy/tryb_wprowadzania.pdf) oraz matematyczne zależności, na których został oparty [Artykuł o rozwijaniu krzywej na cylindrze](przydatne_pdfy/apostol_unwrapping.pdf.pdf)
 
  
